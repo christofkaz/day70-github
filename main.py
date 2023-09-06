@@ -14,7 +14,7 @@ from waitress import serve
 # Optional: add contact me email functionality (Day 60)
 # import smtplib
 
-
+# http://localhost:8080/
 '''
 Make sure the required packages are installed: 
 Open the Terminal in PyCharm (bottom left). 
