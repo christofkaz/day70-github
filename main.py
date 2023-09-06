@@ -10,6 +10,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.orm import relationship
 from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 import os
+from waitress import serve
 # Optional: add contact me email functionality (Day 60)
 # import smtplib
 
@@ -29,8 +30,8 @@ This will install the packages from the requirements.txt for this project.
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
-# app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+# app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
+app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
 ckeditor = CKEditor(app)
 Bootstrap5(app)
 
@@ -299,4 +300,6 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run(debug=False, port=5001)
+    host = "0.0.0.0"  # Listen on all available network interfaces
+    port = 8080  # Use the port you prefer
+    serve(app, host=host, port=port)
